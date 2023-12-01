@@ -1,0 +1,20 @@
+<h1>COMPONENTE DE TABELA</h1>
+
+<app-table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">dimension</th>
+        <th scope="col">name</th>
+        <th scope="col">type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of dadosfilter; index as i">
+        <th>{{ t?.dimension }}</th>
+        <td>{{ t?.name }}</td>
+        <td>{{ t?.type }}</td>
+      </tr>
+    </tbody>
+  </table>
+</app-table>

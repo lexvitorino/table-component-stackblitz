@@ -1,0 +1,73 @@
+<section class="table-basic">
+  <div class="row">
+    <div class="col-12">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"
+          >Quantidade por página</label
+        >
+        <select
+          type="text"
+          class="
+            form-control form-control-sm
+            filter-bt
+            col-lg-2 col-md-6 col-sm-12
+          "
+          id="pageSize"
+          name="pageSize"
+          (change)="onPaginationSize($event)"
+        >
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="-1">Todos</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"
+          >Pesquisa</label
+        >
+        <input
+          type="text"
+          class="
+            form-control form-control-sm
+            filter-bt
+            col-lg-4 col-md-6 col-sm-12
+          "
+          (keyup)="onFilter($event)"
+        />
+      </div>
+    </div>
+  </div>
+  <ng-content></ng-content>
+  <div class="row mt-1">
+    <div class="col-6">
+      <label>{{ showing }}</label>
+    </div>
+    <div class="col-6">
+      <nav aria-label="navigation" *ngIf="showPagination">
+        <ul class="pagination pagination-md">
+          <li [class]="'page-item ' + firstPageDisabled">
+            <a class="page-link" (click)="firstPage()">primeira</a>
+          </li>
+          <li [class]="'page-item ' + priorPageDisabled">
+            <a class="page-link" (click)="priorPage()">anterior</a>
+          </li>
+          <li
+            [class]="'page-item ' + selectPage(p)"
+            *ngFor="let p of paginator.pages"
+            (click)="page(p)"
+          >
+            <a class="page-link">{{ p }}</a>
+          </li>
+          <li [class]="'page-item ' + nextPageDisabled">
+            <a class="page-link" (click)="nextPage()">próxima</a>
+          </li>
+          <li [class]="'page-item ' + lastPageDisabled">
+            <a class="page-link" (click)="lastPage()">última</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
